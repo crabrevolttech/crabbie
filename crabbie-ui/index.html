@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Crabbie</title>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js'></script>
+        <link href="./index.css" rel="stylesheet" type="text/css" />
+        <script src='./accounts-demo.js'></script>
+        <script src='./crabbie-demo.js'></script>
+        <script src='./analytics.js'></script>
+        <link rel="stylesheet" href='https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css' />
+    </head>
+    <body>
+        <div style='display:none' class='warning-alert'>
+            <div class='alert-dialog'>
+                <div class='alert-header'>
+                </div>
+                <div class='alert-text'>
+                    <p>Alert, alert!</p>
+                </div>
+                <div class='alert-buttons' style='text-align: right;'>
+                    <button onclick="document.querySelector('.warning-alert').style.display = 'none'">OK</button>
+                </div>
+            </div>
+        </div>
+        <div class='sidebar'>
+            <div class='chats'>
+                <div class='desktop-option chat-list-entry'>
+                    <i class="fa-solid fa-plus"></i> New Chat
+                </div>
+                <div class='chat-list'>
+                </div>
+            </div>
+            <div class='desktop-options'>
+                <div onclick='PremiumUpdateDialog()' class='desktop-option'>
+                    <i class="fa-solid fa-bolt fa-beat-fade"></i> Upgrade to Premium
+                </div>
+                <div onclick='CrabbieAccounts.LogOut()' class='desktop-option'>
+                    <i class="fa-solid fa-door-open"></i> Sign Out
+                </div>
+                <div onclick='UpdateChats()' class='desktop-option'>
+                    <i class="fa-solid fa-rotate"></i> Refresh Chats
+                </div>
+                <div onclick='ShowUserOptions()' class='desktop-option'>
+                    <i class="fa-solid fa-user"></i> <span class='account-name'>Loading...</span>
+                </div>
+            </div>
+            <div class='mobile-options'>
+                <i class="fa-solid fa-bolt fa-beat-fade"></i>
+                <i onclick='CrabbieAccounts.LogOut()' class="fa-solid fa-door-open"></i>
+                <i class="fa-solid fa-rotate"></i>
+                <i onclick='UI.ShowUserOptions()' class="fa-solid fa-user"></i>
+                <i onclick="mmSidebarClose()" class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+        <div class='lightbox'>
+            <div class='chat-options'>
+                <span onclick="mmToggleSidebar()" class='mobile-menu-toggle '><i class='fa-solid fa-bars'></i></span> Crabbie
+            </div>
+            <div class='replying-to'>
+                Replying to <span>Message</span>
+            </div>
+            <div class='chat-messages'>
+            </div>
+            <div class='chat-input'>
+                <textarea onkeydown='if(event.keyCode==13&&!event.shiftKey){event.preventDefault();SendTheMessage(this)}'></textarea> <i onclick="SendTheMessage(document.querySelector('.chat-input textarea'))" class='fa-solid fa-paper-plane chat-input-send'></i>
+            </div>
+        </div>
+        <script src='./ui.js'></script>
+    </body>
+</html>
